@@ -3,6 +3,7 @@ import { getPlacesForUser } from "@/lib/data/places";
 import { getTagCounts } from "@/lib/data/tags";
 import { getCitiesWithCounts } from "@/lib/data/cities";
 import { filterPlaces } from "@/lib/places-utils";
+import { CityTabs } from "@/components/app-shell/city-tabs";
 import { SearchFilterBar } from "@/components/places/search-filter-bar";
 import { PlacesBoard } from "@/components/places/places-board";
 
@@ -31,6 +32,7 @@ export async function PlacesView({
 
   return (
     <div>
+      <CityTabs cities={cities} />
       <SearchFilterBar tagCounts={tagCounts} />
       <PlacesBoard places={places} cities={cities} defaultCityId={cityId} />
     </div>

@@ -11,7 +11,7 @@ export default async function NewTourPage() {
   ]);
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto">
       <h2 className="text-lg font-semibold mb-4">새 투어</h2>
       <TourWizard places={places} cities={cities} />
     </div>

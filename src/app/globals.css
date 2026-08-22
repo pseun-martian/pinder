@@ -127,3 +127,16 @@
     }
   }
 }
+
+/* Same reasoning as @layer base above: kept in a named layer so it can never
+   accidentally out-rank a Tailwind utility class placed after it. */
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

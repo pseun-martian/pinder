@@ -8,6 +8,7 @@ import { getImageUploadUrl, confirmPlaceImage, deletePlaceImage } from "@/app/ac
 import { compressImage } from "@/lib/image-compress";
 import { Button } from "@/components/ui/button";
 import { Input, Textarea } from "@/components/ui/input";
+import { PhotoCarousel } from "@/components/places/photo-carousel";
 import type { PlaceImage, PlaceWithDetails } from "@/lib/data/places";
 
 type CityOption = { id: string; name: string };
@@ -179,6 +180,21 @@ export function PlaceModal({
           </button>
         </div>
 
+        <PhotoCarousel
+          images={images}
+          onDelete={handleDeleteImage}
+          onAddClick={() => fileInputRef.current?.click()}
+          uploading={uploading}
+          busy={busy}
+        />
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-5 py-4">
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-medium">도시</label>
@@ -231,41 +247,6 @@ export function PlaceModal({
               onChange={(e) => setTagsText(e.target.value)}
               placeholder="카페, 야경, 데이트"
             />
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-medium">사진</label>
-            <div className="grid grid-cols-3 gap-2">
-              {images.map((img) => (
-                <div key={img.id} className="relative border border-line aspect-square">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- signed Storage URL */}
-                  <img src={img.url} alt="" className="w-full h-full object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteImage(img)}
-                    disabled={busy}
-                    className="absolute top-1 right-1 bg-paper border border-ink text-[10px] px-1.5 py-0.5"
-                  >
-                    삭제
-                  </button>
-                </div>
-              ))}
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={busy}
-                className="border border-dashed border-line hover:border-solid hover:border-ink aspect-square flex items-center justify-center text-xs text-ink/60 hover:text-ink disabled:opacity-50"
-              >
-                {uploading ? "업로드 중…" : "사진 추가"}
-              </button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="hidden"
-              />
-            </div>
           </div>
 
           {error && <p className="text-xs text-ink border border-line px-3 py-2">{error}</p>}

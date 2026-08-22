@@ -22,8 +22,7 @@ export default async function CityPage({
   if (!city) notFound();
 
   return (
-    <div>
-      <h2 className="text-lg font-semibold mb-4">{city.name}</h2>
+    <div className="max-w-xl mx-auto">
       <PlacesView cityId={cityId} search={sp.search} tags={tags} />
     </div>
   );

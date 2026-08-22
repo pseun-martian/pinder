@@ -15,25 +15,29 @@ export function AddCityForm() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="w-full border border-dashed border-line hover:border-solid hover:border-ink text-ink/70 hover:text-ink px-2.5 py-2 text-sm text-left"
+        className="shrink-0 border border-dashed border-line hover:border-solid hover:border-ink text-ink/60 hover:text-ink px-3 py-1.5 text-sm"
       >
-        도시 추가
+        + 도시
       </button>
     );
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-1.5">
-      <div className="flex gap-1.5">
-        <Input name="name" placeholder="도시 이름" autoFocus className="text-xs py-1.5" />
+    <div className="relative shrink-0">
+      <form action={formAction} className="flex items-center gap-1.5">
+        <Input name="name" placeholder="도시 이름" autoFocus className="text-xs py-1.5 w-28" />
         <Button type="submit" variant="primary" size="sm" disabled={pending}>
           추가
         </Button>
         <Button type="button" variant="ghost" size="sm" onClick={() => setOpen(false)}>
           닫기
         </Button>
-      </div>
-      {state.error && <p className="text-xs text-ink">{state.error}</p>}
-    </form>
+      </form>
+      {state.error && (
+        <p className="absolute left-0 top-full mt-1 whitespace-nowrap bg-paper border border-ink px-2 py-1 text-xs z-10">
+          {state.error}
+        </p>
+      )}
+    </div>
   );
 }

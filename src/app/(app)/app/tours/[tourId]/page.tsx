@@ -23,5 +23,9 @@ export default async function TourDetailPage({
   const placesById: Record<string, PlaceWithDetails> = {};
   for (const p of allPlaces) placesById[p.id] = p;
 
-  return <TourBoard tour={tour} placesById={placesById} allPlaces={allPlaces} cities={cities} />;
+  return (
+    <div className="max-w-4xl mx-auto">
+      <TourBoard tour={tour} placesById={placesById} allPlaces={allPlaces} cities={cities} />
+    </div>
+  );
 }

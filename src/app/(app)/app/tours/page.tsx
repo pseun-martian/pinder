@@ -9,7 +9,7 @@ export default async function ToursPage() {
   const tours = await getToursForUser(supabase);
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">투어</h2>
         <Link href="/app/tours/new" className={buttonClasses("primary", "md")}>

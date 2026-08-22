@@ -22,7 +22,7 @@ export function PlacesBoard({
 
   return (
     <div>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-2">
         <Button
           variant="primary"
           onClick={() => setModalState("create")}
@@ -34,7 +34,7 @@ export function PlacesBoard({
 
       {cities.length === 0 && (
         <p className="text-sm text-ink/60 border border-dashed border-line px-4 py-10 text-center">
-          먼저 사이드바에서 도시를 추가해 주세요.
+          먼저 위에서 도시를 추가해 주세요.
         </p>
       )}
 
@@ -44,7 +44,7 @@ export function PlacesBoard({
         </p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="flex flex-col">
         {places.map((p) => (
           <PlaceCard key={p.id} place={p} onEdit={() => setModalState(p)} />
         ))}

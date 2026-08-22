@@ -9,8 +9,7 @@ export default async function DashboardPage({
   const tags = params.tags ? params.tags.split(",").filter(Boolean) : undefined;
 
   return (
-    <div>
-      <h2 className="text-lg font-semibold mb-4">전체 도시</h2>
+    <div className="max-w-xl mx-auto">
       <PlacesView search={params.search} tags={tags} />
     </div>
   );
