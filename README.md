@@ -1,4 +1,4 @@
-# Waypoint Atlas
+# Pinder
 
 도시별로 여행 장소를 저장하고, 태그로 검색하고, 날짜만 고르면 Day 단위 일정을
 자동으로 짜주는 개인 여행 아카이브. 투어는 링크 하나로 로그인 없이 공유할 수
@@ -94,7 +94,7 @@ npm run dev
    Development 세 스코프 모두에 등록합니다 (Supabase 프로젝트가 1개이므로
    세 스코프 모두 같은 값).
    - `NEXT_PUBLIC_SITE_URL`은 실제 배포 도메인으로 설정하세요
-     (예: `https://waypoint-atlas.vercel.app` 또는 커스텀 도메인).
+     (예: `https://pinder-rouge.vercel.app` 또는 커스텀 도메인).
 4. Deploy를 누르면 `main` push마다 Production 배포, 다른 브랜치/PR은
    Preview 배포가 자동으로 이뤄집니다 (Vercel Git 연동 기본 동작).
 5. 커스텀 도메인을 쓰려면 **Project Settings → Domains**에서 연결하고,

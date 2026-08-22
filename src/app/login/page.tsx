@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import { signIn, type AuthActionState } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Logo } from "@/components/logo";
 
 const initialState: AuthActionState = { error: null };
 
@@ -14,7 +15,8 @@ export default function LoginPage() {
   return (
     <main className="flex-1 flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-sm">
-        <h1 className="text-xl font-semibold mb-1">Waypoint Atlas</h1>
+        <Logo height={22} className="mb-3" />
+        <h1 className="sr-only">Pinder</h1>
         <p className="text-sm text-ink/60 mb-8">로그인하고 여행 아카이브를 이어가세요.</p>
 
         <form action={formAction} className="flex flex-col gap-4">

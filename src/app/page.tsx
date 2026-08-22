@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { buttonClasses } from "@/components/ui/button";
+import { Logo } from "@/components/logo";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -14,7 +15,8 @@ export default async function Home() {
   return (
     <main className="flex-1 flex items-center justify-center px-4 py-20 text-center">
       <div className="max-w-md flex flex-col items-center gap-5">
-        <h1 className="text-2xl font-semibold">Waypoint Atlas</h1>
+        <Logo height={28} />
+        <h1 className="sr-only">Pinder</h1>
         <p className="text-sm text-ink/70">
           도시별로 여행 장소를 저장하고, 태그로 검색하고, 날짜만 고르면 Day
           단위 일정을 자동으로 짜주는 개인 여행 아카이브.

@@ -14,7 +14,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Waypoint Atlas",
+  title: "Pinder",
   description: "도시별로 여행 장소를 저장하고 Day 단위 투어를 계획하는 개인 여행 아카이브",
 };
 

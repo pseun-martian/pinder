@@ -40,69 +40,90 @@
   --radius-none: 0px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Wrapped in @layer base so these plain-element rules stay LOWER priority
+   than Tailwind utility classes (which live in @layer utilities). Unlayered
+   CSS always beats layered CSS regardless of specificity — without this,
+   rules like `a { color: var(--ink) }` and `button { color: inherit }`
+   silently override utilities like `text-paper`, making text on dark
+   buttons invisible (black-on-black). */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html,
-body {
-  height: 100%;
-}
+  html,
+  body {
+    height: 100%;
+  }
 
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-pretendard), -apple-system, BlinkMacSystemFont,
-    "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
-  font-size: 14px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-pretendard), -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
 
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 600;
-  margin: 0;
-  color: var(--ink);
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+  }
 
-p {
-  margin: 0;
-}
+  p {
+    margin: 0;
+  }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-}
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
 
-button {
-  cursor: pointer;
-}
+  button {
+    cursor: pointer;
+  }
 
-a {
-  color: var(--ink);
-}
+  a {
+    color: var(--ink);
+  }
 
-::selection {
-  background: var(--ink);
-  color: var(--paper);
-}
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
 
-:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-}
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
 
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: none;
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none;
+  }
+
+  /* The logo PNG is solid black on a transparent background — invert it to
+     white in dark mode so it stays visible against the flipped paper/ink. */
+  .pinder-logo {
+    display: block;
+    width: auto;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .pinder-logo {
+      filter: invert(1);
+    }
+  }
 }
